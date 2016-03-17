@@ -68,35 +68,35 @@ public class Sportello extends JFrame {
 			}
 		});
 		
-		signUp.setText("Sing Up");
-		signIn.setText("Sing In");
+		signUp.setText("sign Up");
+		signIn.setText("sign In");
 		contentPane.add(signUp);
 		contentPane.add(signIn);
 	}
 	
 	public void signin()
 	{
+		Container contentPane = getContentPane();
 		
-		JPanel container = new JPanel();
-		container.setLayout(new BoxLayout(container, BoxLayout.300));
-
-		JPanel panel1 = new JPanel();
-		JPanel panel2 = new JPanel();
-
-		container.add(panel1);
-		container.add(panel2);
-	        
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600,600);
+		setSize(500,500);
+		
+		JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		
 		targets = new JTextField[8];
 		for(JTextField target:targets){
 			target = new JTextField();
 			target.setColumns(25);
-			panel2.add(target);
+			rightPanel.add(target);
 		}
-		JButton singUp = initSingUpButton();
-		panel2.add(singUp);
+		JButton signUp = initsignUpButton();
+		rightPanel.add(signUp);
+
+		contentPane.add(leftPanel);
+		contentPane.add(rightPanel);
 	}
 	
 	public void initData(){
@@ -104,9 +104,9 @@ public class Sportello extends JFrame {
 		clienti.add(new Cliente(targets));
 	}
 	
-	public JButton initSingUpButton(){
-		JButton singUp = new JButton();
-		singUp.setText("Sing Up");
+	public JButton initsignUpButton(){
+		JButton signUp = new JButton();
+		signUp.setText("Sign Up");
 		ActionListener btnListener = new ActionListener()
 		{
 			@Override
@@ -117,7 +117,7 @@ public class Sportello extends JFrame {
 			}
 		};
 		
-		return singUp;
+		return signUp;
 	}
 	
 	public void clearFields(){
