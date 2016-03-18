@@ -4,21 +4,20 @@ import javax.swing.JTextField;
 
 public class Cliente {
 
-	
-	public String nome;
-	public String cognome;
-	public String nazioneDiNascita;
-	public String citt‡DiNascita;
-	public String dataDiNascita;
-	public String codiceCliente;
+	public String[] data = new String[Sportello.NUMBER_OF_CLIENT_DATA];
 	
 	public Cliente(JTextField[] targets) {
-		nome = targets[0].getText();
-		cognome = targets[1].getText();
-		nazioneDiNascita = targets[2].getText();
-		citt‡DiNascita = targets[3].getText();
-		dataDiNascita = targets[4].getText();
-		codiceCliente = targets[5].getText();
+		for(int i = 0; i < Sportello.NUMBER_OF_CLIENT_DATA; i++)
+			data[i] = targets[i].getText();
+	}
+	
+	@Override
+	public String toString(){
+		String thisIsASTring = "";
+		for(int i = 0; i < Sportello.NUMBER_OF_CLIENT_DATA; i++){
+			thisIsASTring = thisIsASTring + Sportello.CLIENT_DATA[i] + ": " + data[i] + "\r\n";
+		}
+		return thisIsASTring;
 	}
 	
 	
